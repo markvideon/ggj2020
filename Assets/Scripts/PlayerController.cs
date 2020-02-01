@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
         if (topLeftBoundary == null || bottomRightBoundary == null)
         {
             enforceBounds = false;
-            Debug.Log("A boundary is null!");
+            //Debug.Log("A boundary is null!");
         } else
         {
             Assert.IsTrue(topLeftBoundary.position.y > bottomRightBoundary.position.y);

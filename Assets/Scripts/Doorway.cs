@@ -4,7 +4,16 @@ using System.Linq;
 public class Doorway : MonoBehaviour
 {
     [SerializeField] private Transform target;
+
+    private Transform agent;
+    private NavigationFader fader;
+
     private CameraTechnician[] cameras;
+
+    private Listener fadeOutCallback;
+    private Listener fadeInCallback;
+
+    private bool fadedOut = false;
 
     public void Start()
     {
@@ -12,14 +21,38 @@ public class Doorway : MonoBehaviour
         cameras = FindObjectsOfType<CameraTechnician>();
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    // System.Timer executes outside of main thread
+    public void Update()
     {
-        StopAllCameras();
-        collision.collider.transform.position = target.position;
-        SetActiveCamera();
-        
+        if (fadedOut)
+        {
+            OnFadedOut();
+            fadedOut = false;
+        }
     }
 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        agent = collision.collider.transform;
+
+        // Get mask reference
+        var maskReference = agent.GetChild(0);
+        fader = maskReference.GetComponent<NavigationFader>();
+
+        // Snap to the next area after fade complete
+        fadeOutCallback = () => fadedOut = true;
+        fader.FadeOut(fadeOutCallback);
+    }
+
+    public void OnFadedOut()
+    {
+        StopAllCameras();
+        agent.position = target.position;
+        fader.FadeIn(fadeInCallback);
+        SetActiveCamera();
+    }
+
+    // Assumes each area has a child named Camera
     public void SetActiveCamera()
     {
         var camera = target.transform.Find("Camera");

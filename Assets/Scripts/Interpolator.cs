@@ -43,8 +43,31 @@ public class Interpolator<T>
         Interpolation = calculationCallback;
         OnInterval = intervalCallback;
         OnComplete = completeCallback;
+    }
 
+    public void Initiate()
+    {
         timer.Start();
+    }
+
+    public void Regenerate(T initial, T final, Listener completeCallback)
+    {
+        if (timer != null)
+        {
+            timer.Stop();
+            timer.Dispose();
+        }
+
+        timer = new Timer(length / intervals);
+        timer.Elapsed += OnTick;
+
+        accrued = 0f;
+
+        // Initialise values
+        first = initial;
+        last = final;
+
+        OnComplete = completeCallback; 
     }
 
     public void OnTick(System.Object o, ElapsedEventArgs args)
@@ -53,7 +76,17 @@ public class Interpolator<T>
         {
             timer.Stop();
             timer.Dispose();
-            OnComplete?.Invoke();
+
+            // Try-Catch: For exceptions that may not manifest in editor
+            try
+            {
+                OnComplete?.Invoke();
+
+            }
+            catch (Exception exception)
+            {
+                Debug.Log(exception);
+            }
         } else
         {
             value = Interpolation(first, last, accrued / length);
