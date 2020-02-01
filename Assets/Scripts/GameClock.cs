@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Timers;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameClock : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer worldColor;
+    [SerializeField] private SpriteRenderer skyMask;
+    [SerializeField] private Color[] sky;
     [SerializeField] private float realTimeTick;
     [SerializeField] private float gameTimeScale;
 
@@ -42,6 +46,7 @@ public class GameClock : MonoBehaviour
             }
 
             currentHours = value;
+            OnNextHour();
         }
     }
 
@@ -64,6 +69,15 @@ public class GameClock : MonoBehaviour
         calendar = new Dictionary<string, Listener>();
         timer = new Timer(realTimeTick * SECOND_TO_MILLISECONDS);
         timer.Elapsed += OnTick;
+    }
+
+    // Initialise called by Menu Play
+    public void Initialise()
+    {
+        timer.Start();
+        var idx = 0;
+        skyMask.color = sky[idx];
+        worldColor.color = new Vector4(sky[idx].r, sky[idx].g, sky[idx].b, 1f);
     }
 
     private void Update()
@@ -123,12 +137,18 @@ public class GameClock : MonoBehaviour
     private void OnDayToNight() => Debug.Log("Changed from day to night");
     private void OnNightToDay() => Debug.Log("Changed from night to day");
     private void OnNextMinute() { }
-    private void OnNextHour() {}
+
+    // Change sky each hour
+    private void OnNextHour() {
+        var idx = sky.Length > CurrentHours ? CurrentHours : sky.Length;
+        skyMask.color = sky[idx];
+        worldColor.color = new Vector4(sky[idx].r, sky[idx].g, sky[idx].b, 1f);
+    }
+
     private void OnNextDay() {}
 
 
     // One-liners
-    public void Initialise() => timer.Start();
     private void OnTick(System.Object o, ElapsedEventArgs args) => tick = true;
     private void ScheduleEvent(string time, Listener action) => calendar.Add(time, action);
     private void OnDestroy() => timer.Dispose();

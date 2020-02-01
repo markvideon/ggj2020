@@ -35,7 +35,7 @@ public class Doorway : MonoBehaviour
         agent = collision.collider.transform;
 
         // Get mask reference
-        var maskReference = agent.GetChild(0);
+        var maskReference = agent.transform.Find("NavMask");
         fader = maskReference.GetComponent<NavigationFader>();
 
         // Snap to the next area after fade complete
