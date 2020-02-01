@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 069f9cf84138b463485a6ef45148d387, type: 3}
+  m_Name: NeilIntro
+  m_EditorClassIdentifier: 
+  chain:
+  - What the?
+  - A dog? I thought I caught a weird smell.
+  - I'm Neil. I'm pretty important around here.
+  - I keep this farm running - and I don't need your opinion on my technique.
+  - This planet is just fine how it is.
