@@ -16,3 +16,7 @@ MonoBehaviour:
   - Have you been to the volcano? I have, it was so cool.
   - I think Boots has a crush on me. What do you think?
   - I like your helmet, can I try it on?
+  supportingAudio:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

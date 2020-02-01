@@ -16,3 +16,7 @@ MonoBehaviour:
   - Look at the stars tonight, they're so lovely...
   - Oh! You're new, aren't you?
   - My name's Io, what's yours?
+  supportingAudio:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

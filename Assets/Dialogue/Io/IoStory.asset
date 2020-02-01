@@ -16,3 +16,7 @@ MonoBehaviour:
   - One time, I accidentally took a nap and woke up in the sun.
   - It was so scary!
   - Also, there were a lot of seeds around...
+  supportingAudio:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

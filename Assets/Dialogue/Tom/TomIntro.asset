@@ -15,3 +15,6 @@ MonoBehaviour:
   chain:
   - Hey! I saw you crash land...
   - It was WICKED.
+  supportingAudio:
+  - {fileID: 0}
+  - {fileID: 0}

@@ -16,3 +16,7 @@ MonoBehaviour:
   - I wish we could go out in the day time.
   - Ever since we started cutting down the plants...
   - It's been so hot, we can only go out in the dark.
+  supportingAudio:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

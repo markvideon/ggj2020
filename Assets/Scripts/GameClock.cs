@@ -30,6 +30,10 @@ public class GameClock : MonoBehaviour
         calendar = new Dictionary<string, Listener>();
         timer = new Timer(realTimeTick * SECOND_TO_MILLISECONDS);
         timer.Elapsed += OnTick;
+    }
+
+    public void Initialise()
+    {
         timer.Start();
     }
 
