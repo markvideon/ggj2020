@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Timers;
+using System.Collections.Generic;
 
 public class GameClock : MonoBehaviour
 {
     [SerializeField] private float realTimeTick;
     [SerializeField] private float gameTimeScale;
+
+    Dictionary<string, Listener> calendar;
 
     private Timer timer;
     private bool tick = false;
@@ -24,6 +27,7 @@ public class GameClock : MonoBehaviour
 
     private void Start()
     {
+        calendar = new Dictionary<string, Listener>();
         timer = new Timer(realTimeTick * SECOND_TO_MILLISECONDS);
         timer.Elapsed += OnTick;
         timer.Start();
@@ -59,19 +63,29 @@ public class GameClock : MonoBehaviour
             currentSeconds = workingTimeCopy / (SECOND_TO_MILLISECONDS);
             workingTimeCopy -= currentSeconds * SECOND_TO_MILLISECONDS;
 
-            var currentDaysLabel = currentDays.ToString();
-            var currentHoursLabel = BuildTimeUnitsLabel(currentHours);
-            var currentMinutesLabel = BuildTimeUnitsLabel(currentMinutes);
-            var currentSecondsLabel = BuildTimeUnitsLabel(currentSeconds);
-
-            Debug.LogFormat("Days : {0}, Time: {1}:{2}:{3}",
-                currentDaysLabel,
-                currentHoursLabel,
-                currentMinutesLabel,
-                currentSecondsLabel);
+            PrintTime();
 
             tick = false;
         }
+    }
+
+    private void ScheduleEvent(string time, Listener action)
+    {
+        calendar.Add(time, action);
+    }
+
+    private void PrintTime()
+    {
+        var currentDaysLabel = currentDays.ToString();
+        var currentHoursLabel = BuildTimeUnitsLabel(currentHours);
+        var currentMinutesLabel = BuildTimeUnitsLabel(currentMinutes);
+        var currentSecondsLabel = BuildTimeUnitsLabel(currentSeconds);
+
+        Debug.LogFormat("Days : {0}, Time: {1}:{2}:{3}",
+            currentDaysLabel,
+            currentHoursLabel,
+            currentMinutesLabel,
+            currentSecondsLabel);
     }
 
     private string BuildTimeUnitsLabel(int measurement)
