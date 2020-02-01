@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    [SerializeField] DialogueSO dialogue;
+    [SerializeField] private DialogueSO dialogue;
 
     private string[] speech;
 
     private bool nearby = false;
     private Subtitler subtitler;
+    private MisterSoundman audioPlayer;
+
     private int speechIdx;
 
     private void Start()
     {
         subtitler = FindObjectOfType<Subtitler>();
+        audioPlayer = FindObjectOfType<MisterSoundman>();
         speech = dialogue.chain;
     }
 
@@ -31,6 +34,7 @@ public class NPC : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collision)
     {
         nearby = false;
+        EndDialogue();
     }
 
     public void Update()
@@ -39,19 +43,40 @@ public class NPC : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                audioPlayer.PauseEffect();
                 if (speechIdx < speech.Length)
                 {
+
                     subtitler.ShowBox(true);
                     subtitler.SetText(speech[speechIdx]);
+
+                   
+                    if (dialogue.supportingAudio[speechIdx] != null)
+                    {
+                        audioPlayer.SetEffectClip(dialogue.supportingAudio[speechIdx]);
+                        audioPlayer.PlayEffect();
+                    }
+
                     speechIdx++;
                 } else
                 {
-                    speechIdx = 0;
-                    subtitler.SetText("");
-                    subtitler.ShowBox(false);
+                    EndDialogue();
                 }
                 
             }
         }
+    }
+
+    public void SetActiveDialogue(DialogueSO speechSet)
+    {
+        dialogue = speechSet;
+        speech = speechSet.chain;
+    }
+
+    public void EndDialogue()
+    {
+        speechIdx = 0;
+        subtitler.SetText("");
+        subtitler.ShowBox(false);
     }
 }

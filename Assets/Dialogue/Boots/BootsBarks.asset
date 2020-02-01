@@ -19,3 +19,10 @@ MonoBehaviour:
   - BoOts.
   - BOO ts
   - Boots boots boots yeah
+  supportingAudio:
+  - {fileID: 0}
+  - {fileID: 8300000, guid: efea999199d914dfe8872b78def3e63f, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

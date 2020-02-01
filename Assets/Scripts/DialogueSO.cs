@@ -5,4 +5,5 @@ using System.Collections;
 public class DialogueSO : ScriptableObject
 {
     public string[] chain;
+    public AudioClip[] supportingAudio;
 }
