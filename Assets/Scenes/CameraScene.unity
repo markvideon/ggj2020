@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.7411765}
+  m_Color: {r: 1, g: 0.6462264, b: 0.8117647, a: 0.4745098}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -431,6 +431,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuRootObject: {fileID: 0}
+  menuMusic: {fileID: 8300000, guid: 6b073b2ee2b7042f5b7e1e0bec5a3f8a, type: 3}
+  playSound: {fileID: 8300000, guid: c024adc81385b4df4b82a6425d04083c, type: 3}
+  postMenuAmbient: {fileID: 8300000, guid: a185b4cc51a9a46c7b70ce60af71ecfc, type: 3}
 --- !u!1001 &641636968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -778,7 +781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &745327430
 RectTransform:
   m_ObjectHideFlags: 0
@@ -844,7 +847,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 42.95
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1139,7 +1142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.88235295}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1275,6 +1278,7 @@ GameObject:
   - component: {fileID: 1282054277}
   - component: {fileID: 1282054276}
   - component: {fileID: 1282054278}
+  - component: {fileID: 1282054279}
   m_Layer: 0
   m_Name: Play
   m_TagString: Untagged
@@ -1320,7 +1324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 6300946219f44451b895772a29aba286, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1397,23 +1401,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1432985786}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!1 &1432985786 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4571818367857618202, guid: 27d1ffe58f47f468083bb04ce094e758,
-    type: 3}
-  m_PrefabInstance: {fileID: 4571818367557747218}
+--- !u!114 &1282054279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282054274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1254083943, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 1
+  m_AspectRatio: 2.1390533
 --- !u!1001 &1694303028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1737,6 +1738,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571818367857618201, guid: 27d1ffe58f47f468083bb04ce094e758,
+        type: 3}
+      propertyPath: speedMultiplier
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4571818367857618202, guid: 27d1ffe58f47f468083bb04ce094e758,
         type: 3}

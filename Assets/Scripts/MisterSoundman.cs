@@ -9,7 +9,7 @@ public class MisterSoundman : MonoBehaviour
     private AudioSource backgroundSource;
     private AudioSource effectSource;
 
-    void Start()
+    void Awake()
     {
         backgroundSource = this.gameObject.AddComponent<AudioSource>();
         effectSource = this.gameObject.AddComponent<AudioSource>();
@@ -24,4 +24,7 @@ public class MisterSoundman : MonoBehaviour
     public void PlayEffect() => effectSource.Play();
     public void PauseAmbient() => backgroundSource.Pause();
     public void PauseEffect() => effectSource.Pause();
+    public void SetAmbientVolume(float volume) => backgroundSource.volume = volume;
+    public void SetEffectVolume(float volume) => effectSource.volume = volume;
+
 }
