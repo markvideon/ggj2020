@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraTechnician : MonoBehaviour
 {
@@ -22,7 +20,6 @@ public class CameraTechnician : MonoBehaviour
                 this.transform.position += new Vector3(nextX, nextY, 0f);
             }
         }
-        
     }
 
     public void SetTarget(Transform nextTarget) => target = nextTarget;

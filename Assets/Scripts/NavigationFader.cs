@@ -44,10 +44,8 @@ public class NavigationFader : MonoBehaviour
 
     public void FadeOut(Listener onFadeOut)
     {
-        Debug.Log("Fade out start");
         Listener onComplete = onFadeOut;
         onComplete += () => isUpdating = false;
-        onComplete += () => Debug.Log("Fade out end");
 
         isUpdating = true;
         maskTimer.Regenerate(startValue, endValue, onFadeOut) ;
@@ -56,7 +54,6 @@ public class NavigationFader : MonoBehaviour
 
     public void FadeIn(Listener onFadeIn)
     {
-        Debug.Log("Fade in start");
         Listener onComplete = onFadeIn;
         onComplete += () => isUpdating = false;
 
