@@ -23,11 +23,13 @@ public class NPC : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        nearby = true;
-
         if (collision.gameObject.GetComponent<PlayerController>() == null)
         {
             Debug.Log("Collider for NPC was set off by something other than the player!");
+            Debug.Log(collision.gameObject.name);
+        } else
+        {
+            nearby = true;
         }
     }
 
@@ -41,6 +43,7 @@ public class NPC : MonoBehaviour
     {
         if (nearby)
         {
+            Debug.Log("Nearby is true for " + this.gameObject.name);
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 audioPlayer.PauseEffect();

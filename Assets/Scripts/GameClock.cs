@@ -121,11 +121,11 @@ public class GameClock : MonoBehaviour
 
         displayedTime = currentHoursLabel + ":" + currentMinutesLabel;
 
-        Debug.LogFormat("Days : {0}, Time: {1}:{2}:{3}",
+        /*Debug.LogFormat("Days : {0}, Time: {1}:{2}:{3}",
             currentDaysLabel,
             currentHoursLabel,
             currentMinutesLabel,
-            currentSecondsLabel);
+            currentSecondsLabel);*/
     }
 
     private string BuildTimeUnitsLabel(int measurement)

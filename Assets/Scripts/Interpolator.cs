@@ -2,9 +2,6 @@
 using System.Timers;
 using UnityEngine;
 
-public delegate void Listener();
-public delegate T Calculation<T>(T initial, T final,float proportion);
-
 public class Interpolator<T>
 {
     private Timer timer;
