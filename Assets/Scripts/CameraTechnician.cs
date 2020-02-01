@@ -8,16 +8,21 @@ public class CameraTechnician : MonoBehaviour
     [SerializeField] private float distanceThreshold = 0.1f;
     [SerializeField] private float moveRate = 2f;
 
-    // Update is called once per frame
+    [SerializeField] public bool active = false;
+
     void Update()
     {
-        if (Vector3.Distance(this.transform.position, target.transform.position) > distanceThreshold)
+        if (active)
         {
-            Vector3 differential = target.transform.position - this.transform.position;
-            var nextX = differential.x * moveRate * Time.deltaTime;
-            var nextY = differential.y * moveRate * Time.deltaTime;
-            this.transform.position += new Vector3(nextX, nextY, 0f);
+            if (Vector3.Distance(this.transform.position, target.transform.position) > distanceThreshold)
+            {
+                Vector3 differential = target.transform.position - this.transform.position;
+                var nextX = differential.x * moveRate * Time.deltaTime;
+                var nextY = differential.y * moveRate * Time.deltaTime;
+                this.transform.position += new Vector3(nextX, nextY, 0f);
+            }
         }
+        
     }
 
     public void SetTarget(Transform nextTarget) => target = nextTarget;

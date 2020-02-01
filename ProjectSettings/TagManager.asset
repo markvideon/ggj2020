@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Player
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: EnvironmentBG
+    uniqueID: 42099943
+    locked: 0
+  - name: Player
+    uniqueID: 238845783
+    locked: 0
+  - name: EnvironmentFG
+    uniqueID: 339074391
     locked: 0
